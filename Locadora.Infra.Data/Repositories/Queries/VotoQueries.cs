@@ -9,7 +9,7 @@
 
         public static string Listar = @"SELECT V.VotoId,
                                         F.FilmeId as FilmeId, F.Titulo as Titulo, F.Diretor as Diretor,
-                                        U.UsuarioId, U.Nome, U.Login
+                                        U.UsuarioId as UsuarioId, U.Nome as Nome, U.Login as Login
                                         FROM Votos V
                                         INNER JOIN Filmes F ON F.FilmeId = V.FilmeId
                                         INNER JOIN Usuarios U ON U.UsuarioId = V.UsuarioId;";

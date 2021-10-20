@@ -70,16 +70,16 @@ namespace Locadora.Infra.Data.Repositories
         {
             try
             {
-                return _dataContext.SqlServerConexao.Query<VotoQueryResult, UsuarioQueryResult, FilmeQueryResult, VotoQueryResult>(
+                return _dataContext.SqlServerConexao.Query<VotoQueryResult, FilmeQueryResult, UsuarioQueryResult, VotoQueryResult>(
                     VotoQueries.Listar,
-                    map: ((voto, usuario, filme) =>
+                    map: ((voto, filme, usuario) =>
                     {
                         voto.Filme = filme;
                         voto.Usuario = usuario;
 
                         return voto;
                     }),
-                        splitOn: "VotoId,FilmeId,UsuarioId"
+                        splitOn: "FilmeId,UsuarioId"
                     ).ToList();
             }
             catch (System.Exception ex)

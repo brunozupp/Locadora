@@ -58,7 +58,7 @@ namespace Locadora.Domain.Handlers
                 Issuer = _settings.Issuer,
                 Audience = _settings.Audience,
                 Subject = identityClaims,
-                Expires = DateTime.UtcNow.AddMinutes(_settings.Expiration),
+                Expires = DateTime.UtcNow.AddHours(_settings.Expiration),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)
             });
@@ -67,7 +67,7 @@ namespace Locadora.Domain.Handlers
             return new
             {
                 AccessToken = encodedToken,
-                ExpiresIn = TimeSpan.FromMinutes(_settings.Expiration).TotalSeconds
+                ExpiresIn = TimeSpan.FromHours(_settings.Expiration).TotalSeconds
             };
         }
     }
