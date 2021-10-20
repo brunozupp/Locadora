@@ -7,7 +7,7 @@ namespace Locadora.Api.Controllers
 {
     [Produces("application/json")]
     [Consumes("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/v1/autenticacao")]
     [ApiController]
     public class AutenticacaoController : ControllerBase
     {
