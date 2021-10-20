@@ -61,6 +61,9 @@ namespace Locadora.Domain.Handlers
                 if (!_usuarioRepository.CheckId(command.UsuarioId))
                     return new VotoCommandResult(false, "Este usuário não existe", command.Notifications);
 
+                if (_votoRepository.JaFoiVotado(command.UsuarioId, command.FilmeId))
+                    return new VotoCommandResult(false, "O usuário já votou nesse filme", command.Notifications);
+
                 long id = 0;
 
                 Voto voto = new Voto(id, command.UsuarioId, command.FilmeId);

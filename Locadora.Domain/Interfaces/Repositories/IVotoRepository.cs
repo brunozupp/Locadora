@@ -12,6 +12,10 @@ namespace Locadora.Domain.Interfaces.Repositories
 
         List<VotoQueryResult> Listar();
 
+        List<VotoDoUsuarioQueryResult> ListarPorUsuario(long usuarioId);
+
         bool CheckId(long id);
+
+        bool JaFoiVotado(long usuarioId, long filmeId);
     }
 }

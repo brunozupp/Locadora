@@ -39,9 +39,17 @@ namespace Locadora.Api.Controllers
         }
 
         [HttpGet]
+        [Route("")]
         public List<VotoQueryResult> ListarVotos()
         {
             return _repository.Listar();
+        }
+
+        [HttpGet]
+        [Route("usuarios/{usuarioId:long}")]
+        public List<VotoDoUsuarioQueryResult> ListarVotosPorUsuario([FromRoute] long usuarioId)
+        {
+            return _repository.ListarPorUsuario(usuarioId);
         }
     }
 }
