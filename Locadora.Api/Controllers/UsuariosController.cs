@@ -27,14 +27,13 @@ namespace Locadora.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route("usuarios")]
         public ICommandResult InserirUsuario([FromBody] AdicionarUsuarioCommand command)
         {
             return _handler.Handle(command);
         }
 
         [HttpPut]
-        [Route("usuarios/{id}")]
+        [Route("{id:long}")]
         public ICommandResult AtualizarUsuario([FromRoute] long id, [FromBody] AtualizarUsuarioCommand command)
         {
             command.Id = id;
@@ -42,7 +41,7 @@ namespace Locadora.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("usuarios/{id}")]
+        [Route("{id:long}")]
         public ICommandResult ExcluirUsuario([FromRoute] long id)
         {
             var command = new ExcluirUsuarioCommand() { Id = id };
@@ -50,14 +49,13 @@ namespace Locadora.Api.Controllers
         }
 
         [HttpGet]
-        [Route("usuarios")]
         public List<UsuarioQueryResult> ListarUsuarios()
         {
             return _repository.Listar();
         }
 
         [HttpGet]
-        [Route("usuarios/{id}")]
+        [Route("{id:long}")]
         public UsuarioQueryResult ObterUsuario([FromRoute] long id)
         {
             return _repository.Obter(id);

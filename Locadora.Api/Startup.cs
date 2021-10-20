@@ -70,7 +70,7 @@ namespace Locadora.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Locadora.Api", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = @"Autorização utilizando bearer token. Digite 'Bearer' [espaço] e o token.",
+                    Description = @"'Bearer' {Token JWT}",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,

@@ -26,14 +26,12 @@ namespace Locadora.Api.Controllers
         }
 
         [HttpPost]
-        [Route("filmes")]
         public ICommandResult InserirFilme([FromBody] AdicionarFilmeCommand command)
         {
             return _handler.Handle(command);
         }
 
-        [HttpPut]
-        [Route("filmes/{id}")]
+        [HttpPut("{id:long}")]
         public ICommandResult AtualizarFilme([FromRoute] long id, [FromBody] AtualizarFilmeCommand command)
         {
             command.Id = id;
@@ -41,7 +39,7 @@ namespace Locadora.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("filmes/{id}")]
+        [Route("{id:long}")]
         public ICommandResult ExcluirFilme([FromRoute] long id)
         {
             var command = new ExcluirFilmeCommand() { Id = id };
@@ -49,14 +47,14 @@ namespace Locadora.Api.Controllers
         }
 
         [HttpGet]
-        [Route("filmes")]
+        [Route("")]
         public List<FilmeQueryResult> ListarFilmes()
         {
             return _repository.Listar();
         }
 
         [HttpGet]
-        [Route("filmes/{id}")]
+        [Route("{id:long}")]
         public FilmeQueryResult ObterFilme([FromRoute] long id)
         {
             return _repository.Obter(id);

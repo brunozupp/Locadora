@@ -26,21 +26,19 @@ namespace Locadora.Api.Controllers
         }
 
         [HttpPost]
-        [Route("votos")]
         public ICommandResult InserirVoto([FromBody] AdicionarVotoCommand command)
         {
             return _handler.Handle(command);
         }
 
         [HttpDelete]
-        [Route("votos/{id}")]
+        [Route("{id:long}")]
         public ICommandResult ExcluirVoto(long id)
         {
             return _handler.Handle(new ExcluirVotoCommand() { Id = id });
         }
 
         [HttpGet]
-        [Route("votos")]
         public List<VotoQueryResult> ListarVotos()
         {
             return _repository.Listar();
